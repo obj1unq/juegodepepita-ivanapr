@@ -21,7 +21,7 @@ describe "Tests de Pepita" {
 	}
 
 	test "Al volar mucho pepita queda cansada" {
-		pepita.vola(100)
+		pepita.vola(11)
 		assert.that(pepita.estaCansada())
 	}
 
@@ -37,9 +37,25 @@ describe "Tests de Pepita" {
 	}
 
 	test "Al estar en la misma posicion que el nido pepita crece" {
+		pepita.energia(1000)
 		pepita.irA(nido.position())
 		assert.equals("pepita-grande.png", pepita.image())
 	}
-
+	test "Cuando Pepita se mueve Silvestre la persigue"{
+		pepita.irA(game.at(3,5))
+		assert.equals(game.at(3,0), silvestre.position())
+	}
+	test "Pepita al estar en la misma posicion que Silvestre se pone gris" {
+		pepita.irA(game.at(3,0))
+		assert.equals("pepita-gris.png", pepita.image())
+	}
+	test "Silvestre no puede estar a la izquierda de la pantalla" {
+		pepita.irA(game.origin())
+		assert.equals(game.at(3,0), silvestre.position())
+	}
+	test "Pepita se cansa" {
+		
+		assert.throwsException({pepita.irA(game.at(20,20))})
+	}
 }
 

@@ -4,11 +4,12 @@ import extras.*
 import wollok.game.*
 
 object tutorial1 {
-
+	//Agregar visuales al tablero
 	method iniciar() {
 		game.addVisual(nido)
 		game.addVisual(silvestre)
-		game.addVisualCharacter(pepita)
+		game.addVisualCharacter(pepita) // Viene con las teclas de flechas direcciones configuradas para mover al personaje jugable
+		//game.addVisualIn(objeto, posicion)
 	}
 
 }
@@ -45,6 +46,8 @@ object config {
 	method configurarTeclas() {
 		keyboard.left().onPressDo({ pepita.irA(pepita.position().left(1))})
 		keyboard.right().onPressDo({ pepita.irA(pepita.position().right(1))})
+		keyboard.up().onPressDo({ pepita.irA(pepita.position().up(1))})
+		keyboard.down().onPressDo({ pepita.irA(pepita.position().down(1))})
 	}
 
 	method configurarColisiones() {

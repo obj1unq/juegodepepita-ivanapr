@@ -4,13 +4,15 @@ import niveles.*
 import extras.*
 import wollok.game.*
 
+//Main
 program PepitaGame {
 	game.title("Pepita")
-	game.height(10)
-	game.width(10)
+	game.height(10) //alto
+	game.width(10) //ancho
 	game.boardGround("fondo2.jpg")
+	game.cellSize(50) // ajustar el tamaño de pixeles de celda
 
-	tutorial1.iniciar()
+	tutorial2.iniciar()
 
 	game.showAttributes(pepita) //Debug
 
