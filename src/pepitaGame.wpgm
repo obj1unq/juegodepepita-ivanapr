@@ -12,7 +12,8 @@ program PepitaGame {
 	game.boardGround("fondo2.jpg")
 	game.cellSize(50) // ajustar el tamaño de pixeles de celda
 
-	tutorial2.iniciar()
+//	pepita.energia(1000) // HACKAZO
+	tutorial3.iniciar()
 
 	game.showAttributes(pepita) //Debug
 

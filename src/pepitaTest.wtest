@@ -8,6 +8,8 @@ describe "Tests de Pepita" {
 	fixture {
 		// El game no se reinicia en cada test: https://github.com/uqbar-project/wollok/issues/1896
 		game.clear()
+		game.addVisual(pepita)
+		game.addVisual(manzana)
 	}
 
 	test "Al comer pepita aumenta su energia" {
@@ -54,8 +56,34 @@ describe "Tests de Pepita" {
 		assert.equals(game.at(3,0), silvestre.position())
 	}
 	test "Pepita se cansa" {
-		
 		assert.throwsException({pepita.irA(game.at(20,20))})
+	}
+	test "Pepita esta en el aire y cae" {
+		pepita.irA(game.at(1,2))
+		pepita.caerSiEstasEnElAire()
+		assert.equals(game.at(1, 1), pepita.position())
+	}
+	test "Pepita esta en el aire y cae no pierde energia" {
+		pepita.irA(game.at(1,2))
+		const energiaInicial = pepita.energia()
+		pepita.caerSiEstasEnElAire()
+		assert.equals(energiaInicial, pepita.energia())
+	}
+	test "Pepita esta en el suelo entonces no cae" {
+		pepita.irA(game.at(1,0))
+		pepita.caerSiEstasEnElAire()
+		assert.equals(game.at(1,0), pepita.position())
+	}
+	test "Pepita come la comida que hay debajo y sube su energia" {
+		pepita.irA(manzana.position())
+		const energiaInicial = pepita.energia()
+		pepita.comeComidaDebajo()
+		assert.that(pepita.energia() > energiaInicial)
+	}
+	test "Pepita come la comida que hay debajo y desaparece" {
+		pepita.irA(manzana.position())
+		pepita.comeComidaDebajo()
+		assert.notThat(game.hasVisual(manzana))
 	}
 }
 

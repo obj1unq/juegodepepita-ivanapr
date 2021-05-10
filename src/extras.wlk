@@ -8,7 +8,9 @@ object nido {
 	method image() = "nido.png"
 
 	method teEncontro(ave) {
-		game.stop()
+		game.say(ave, "¡GANE!")
+		game.removeTickEvent("GRAVEDAD")
+		game.schedule(2000, { game.stop() })
 	}
 }
 
@@ -20,7 +22,11 @@ object silvestre {
 
 	method position() {
 		return game.at(pepita.position().x().max(3), 0)
-	} 
-
+	}
+	 
+	method teEncontro(ave) {
+		game.say(ave, "¡PERDÍ!")
+		game.schedule(2000, { game.stop() })
+	}
 }
 

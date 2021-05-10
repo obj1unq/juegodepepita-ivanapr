@@ -36,13 +36,25 @@ object pepita {
 	}
 
 	method irA(nuevaPosicion) {
-
 		self.vola(position.distance(nuevaPosicion))
 		position = nuevaPosicion
 	}
+	
 	method validarEnergiaParaVolar(kms) {
 		if (self.energiaParaVolar(kms) > energia) {
 			self.error("No tengo energia")
+		}
+	}
+
+	method comeComidaDebajo() {
+		const comida = game.uniqueCollider(self)
+		self.come(comida)
+		game.removeVisual(comida) 
+	}
+	
+	method caerSiEstasEnElAire() {
+		if (not self.estaEnElPiso()) {
+			position = position.down(1) 
 		}
 	}
 
@@ -53,6 +65,10 @@ object pepita {
 
 	method estaEnElNido() {
 		return position == nido.position()
+	}
+	
+	method estaEnElPiso() {
+		return position.y() == 0 
 	}
 
 }

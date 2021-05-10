@@ -23,6 +23,7 @@ object tutorial2 {
 		game.addVisual(silvestre)
 		game.addVisual(pepita)
 		config.configurarTeclas()
+		config.agregarGravedad()
 	}
 
 }
@@ -36,6 +37,7 @@ object tutorial3 {
 		game.addVisual(silvestre)
 		game.addVisual(pepita)
 		config.configurarTeclas()
+		config.agregarGravedad()
 		config.configurarColisiones()
 	}
 
@@ -48,10 +50,17 @@ object config {
 		keyboard.right().onPressDo({ pepita.irA(pepita.position().right(1))})
 		keyboard.up().onPressDo({ pepita.irA(pepita.position().up(1))})
 		keyboard.down().onPressDo({ pepita.irA(pepita.position().down(1))})
+		keyboard.c().onPressDo({ pepita.comeComidaDebajo() })
+		
+	}
+	
+	method agregarGravedad() {
+		game.onTick(800, "GRAVEDAD", { pepita.caerSiEstasEnElAire() }) 
 	}
 
+
 	method configurarColisiones() {
-		game.onCollideDo(pepita, { algo => algo.teEncontro(pepita)})
+		game.onCollideDo(pepita, { algo => algo.teEncontro(pepita) })
 	}
 
 }
