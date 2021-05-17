@@ -1,5 +1,6 @@
 import extras.*
 import wollok.game.*
+import comidas.*
 
 object pepita {
 	
@@ -51,9 +52,13 @@ object pepita {
 		if (!objetosDebajo.isEmpty()) {
 			const comida = objetosDebajo.head()	
 //			self.validarQueEsComida(comida)		
-			self.come(comida)
-			game.removeVisual(comida) 
+			self.comerYRemover(comida) 
 		}
+	}
+	
+	method comerYRemover(comida) {		
+		self.come(comida)
+		gestorDeComidas.removerComida(comida)
 	}
 	
 	method caerSiEstasEnElAire() {

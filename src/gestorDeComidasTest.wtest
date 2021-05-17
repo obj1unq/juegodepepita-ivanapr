@@ -1,0 +1,30 @@
+import wollok.game.*
+import pepita.*
+import comidas.*
+import extras.*
+
+describe "Tests del Gestor de Comidas" {
+	fixture {
+		// El game no se reinicia en cada test: https://github.com/uqbar-project/wollok/issues/1896
+		game.clear()
+	}
+
+	test "Solamente agrega comidas hasta cierto limite" {
+		gestorDeComidas.agregarComidaSiRequiere()
+		gestorDeComidas.agregarComidaSiRequiere()
+		gestorDeComidas.agregarComidaSiRequiere()
+		assert.equals(3, gestorDeComidas.cantidadDeComidas())
+		gestorDeComidas.agregarComidaSiRequiere()
+		assert.equals(3, gestorDeComidas.cantidadDeComidas())
+	}
+	
+	test "Si pepita come una comida entonces se libera un espacio disponible" {
+		gestorDeComidas.agregarComidaSiRequiere()
+		gestorDeComidas.agregarComidaSiRequiere()
+		gestorDeComidas.agregarComidaSiRequiere()
+		const comida = gestorDeComidas.comidaExistente()
+		pepita.comerYRemover(comida)
+		assert.equals(2, gestorDeComidas.cantidadDeComidas())
+	}
+}
+

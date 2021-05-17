@@ -6,16 +6,21 @@ import wollok.game.*
 object nivel {
 
 	method iniciar() {
-		game.addVisual(new Manzana(position = game.at(1, 8)))
-		game.addVisual(new Manzana(position = game.at(4, 8)))
-		game.addVisual(new Alpiste(peso = 70))
-		game.addVisual(new Alpiste(peso = 110))
+		self.agregarObjetosIniciales()
+		self.configurarMecanicas()
+	}
+	
+	method agregarObjetosIniciales() {
 		game.addVisual(nido)
 		game.addVisual(silvestre)
 		game.addVisual(pepita)
+	}
+	
+	method configurarMecanicas() {
 		config.configurarTeclas()
 		config.agregarGravedad()
 		config.configurarColisiones()
+		config.configurarComidaAleatoria() 
 	}
 
 }
@@ -38,6 +43,10 @@ object config {
 
 	method configurarColisiones() {
 		game.onCollideDo(pepita, { algo => algo.teEncontro(pepita) })
+	}
+	
+	method configurarComidaAleatoria() {
+		game.onTick(3000, "COMIDA", { gestorDeComidas.agregarComidaSiRequiere() })
 	}
 
 }
