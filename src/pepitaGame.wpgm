@@ -13,7 +13,7 @@ program PepitaGame {
 	game.cellSize(50) // ajustar el tamaño de pixeles de celda
 
 //	pepita.energia(1000) // HACKAZO
-	tutorial3.iniciar()
+	nivel.iniciar()
 
 	game.showAttributes(pepita) //Debug
 

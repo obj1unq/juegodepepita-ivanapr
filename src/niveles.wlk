@@ -3,36 +3,13 @@ import comidas.*
 import extras.*
 import wollok.game.*
 
-object tutorial1 {
-	//Agregar visuales al tablero
-	method iniciar() {
-		game.addVisual(nido)
-		game.addVisual(silvestre)
-		game.addVisualCharacter(pepita) // Viene con las teclas de flechas direcciones configuradas para mover al personaje jugable
-		//game.addVisualIn(objeto, posicion)
-	}
-
-}
-
-object tutorial2 {
+object nivel {
 
 	method iniciar() {
-		game.addVisual(manzana)
-		game.addVisual(alpiste)
-		game.addVisual(nido)
-		game.addVisual(silvestre)
-		game.addVisual(pepita)
-		config.configurarTeclas()
-		config.agregarGravedad()
-	}
-
-}
-
-object tutorial3 {
-
-	method iniciar() {
-		game.addVisual(manzana)
-		game.addVisual(alpiste)
+		game.addVisual(new Manzana(position = game.at(1, 8)))
+		game.addVisual(new Manzana(position = game.at(4, 8)))
+		game.addVisual(new Alpiste(peso = 70))
+		game.addVisual(new Alpiste(peso = 110))
 		game.addVisual(nido)
 		game.addVisual(silvestre)
 		game.addVisual(pepita)

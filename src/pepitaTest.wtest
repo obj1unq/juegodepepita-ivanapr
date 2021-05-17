@@ -4,6 +4,7 @@ import comidas.*
 import extras.*
 
 describe "Tests de Pepita" {
+	const manzana = new Manzana(position = game.center())
 
 	fixture {
 		// El game no se reinicia en cada test: https://github.com/uqbar-project/wollok/issues/1896

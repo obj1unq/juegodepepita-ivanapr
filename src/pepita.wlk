@@ -47,9 +47,13 @@ object pepita {
 	}
 
 	method comeComidaDebajo() {
-		const comida = game.uniqueCollider(self)
-		self.come(comida)
-		game.removeVisual(comida) 
+		const objetosDebajo = game.colliders(self)
+		if (!objetosDebajo.isEmpty()) {
+			const comida = objetosDebajo.head()	
+//			self.validarQueEsComida(comida)		
+			self.come(comida)
+			game.removeVisual(comida) 
+		}
 	}
 	
 	method caerSiEstasEnElAire() {
