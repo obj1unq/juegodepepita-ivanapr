@@ -18,3 +18,41 @@ program PepitaGame {
 
 	game.start()
 }
+
+
+
+
+
+
+// Aparecen enemigos aleatorios
+//   onTick -> generadorDeEnemigos.agregarNuevoEnemigo()
+//   (Análogo al gestor de comidas de este ejemplo)
+
+// los enemigos disparan (cada tanto segundos)
+// 1) Todos los enemigos disparen al mismo tiempo
+//    onTick -> generadorDeEnemigos.hacerQueTodosDisparen()
+//    (De manera análoga a cómo el gestor ahora conoce a todas las comidas del juego)
+//
+// 2) Tener un onTick por cada enemigo -> Cuando se instancia -> enemigo.comenzarADisparar()
+//    enemigo.comenzarADisparar() -> onTick -> self.disparar() (propio de la instacia, para esto hay que pensar el nombre)
+//    DETALLE IMPORTANTE: 
+//      - Si el enemigo desaparece, queremos sacar su onTick, sino va a seguir disparando
+//      - El onTick se saca con su nombre, que es un string.
+//      - Nombre del onTick = "DISPARO_ENEMIGO_" + self.identity()
+//      - Al destruir al enemigo -> enemigo.destruir() -> Saca el onTick y saca el objeto del juego.
+
+
+// Los tiros lastiman al personaje
+//  - enemigo.disparar() -> Instancia una bala / tiro + onTick (similar al caso anterior) que lo haga avanzar.
+
+
+// Los enemigos también lastiman al personaje
+
+//  - Configurar el colide en el personaje y jugar con polimorfismo para ver cómo es dañado desde una bala o desde un enemigo.
+
+
+
+
+
+
+

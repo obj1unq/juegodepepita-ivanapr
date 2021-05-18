@@ -10,7 +10,8 @@ describe "Tests de Pepita" {
 		// El game no se reinicia en cada test: https://github.com/uqbar-project/wollok/issues/1896
 		game.clear()
 		game.addVisual(pepita)
-		game.addVisual(manzana)
+		game.addVisual(nido)
+		gestorDeComidas.agregarComida(manzana)
 	}
 
 	test "Al comer pepita aumenta su energia" {
@@ -81,10 +82,21 @@ describe "Tests de Pepita" {
 		pepita.comeComidaDebajo()
 		assert.that(pepita.energia() > energiaInicial)
 	}
+	
 	test "Pepita come la comida que hay debajo y desaparece" {
 		pepita.irA(manzana.position())
 		pepita.comeComidaDebajo()
 		assert.notThat(game.hasVisual(manzana))
+	}
+	
+	test "Pepita no tiene comida y no pasa nada" {
+		// El assert es que no explote este mensaje
+		pepita.comeComidaDebajo()
+	}
+	
+	test "Pepita solo come comidas" {
+		pepita.irA(nido.position())
+		assert.throwsExceptionWithMessage("Esto no es una comida", { pepita.comeComidaDebajo() })
 	}
 }
 

@@ -47,11 +47,12 @@ object pepita {
 		}
 	}
 
+	// Esto ya no se usa, queda por temas didácticos, sino se berraría
 	method comeComidaDebajo() {
 		const objetosDebajo = game.colliders(self)
 		if (!objetosDebajo.isEmpty()) {
 			const comida = objetosDebajo.head()	
-//			self.validarQueEsComida(comida)		
+			self.validarQueEsComida(comida)
 			self.comerYRemover(comida) 
 		}
 	}
@@ -78,6 +79,12 @@ object pepita {
 	
 	method estaEnElPiso() {
 		return position.y() == 0 
+	}
+	
+	method validarQueEsComida(posibleComida) {
+		if (not gestorDeComidas.existeComida(posibleComida)) {
+			self.error("Esto no es una comida")
+		}
 	}
 
 }

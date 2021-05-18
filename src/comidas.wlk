@@ -48,6 +48,10 @@ object gestorDeComidas {
 		comidasEnJuego.remove(comida)
 		game.removeVisual(comida) 
 	}
+	
+	method existeComida(comida) {
+		return comidasEnJuego.contains(comida) 
+	}
 
 }
 
@@ -58,8 +62,9 @@ class Manzana {
 
 	method energiaQueOtorga() = 40
 
+	// Está repetido
 	method teEncontro(ave) {
-		// No hace nada
+		ave.comerYRemover(self)
 	}
 }
 
@@ -72,8 +77,9 @@ class Alpiste {
 
 	method energiaQueOtorga() = 1 * peso
 
+	// Está repetido
 	method teEncontro(ave) {
-		// No hace nada
+		ave.comerYRemover(self)
 	}
 }
 
