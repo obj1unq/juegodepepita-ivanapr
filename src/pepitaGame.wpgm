@@ -12,7 +12,7 @@ program PepitaGame {
 	game.boardGround("fondo2.jpg")
 	game.cellSize(50) // ajustar el tamaño de pixeles de celda
 
-	nivel.iniciar()
+	nivelInicial.iniciar()
 
 	game.showAttributes(pepita) //Debug
 

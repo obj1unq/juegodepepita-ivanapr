@@ -7,7 +7,7 @@ object pepita {
 	// Los objetos tienen que saber decirnos 2 cosas:
 	// - image: la imagen que les corresponde para mostrar en pantalla
 	// -position: la ubicación en la pantalla en coordenadas X e Y
-
+	var property nivelActual 
 	var property energia = 100
 	var property position = game.origin()
 
@@ -20,7 +20,7 @@ object pepita {
 	}
 	
 	method atrapada() {
-		return self.position() == silvestre.position()
+		return game.hasVisual(silvestre) and self.position() == silvestre.position()
 	}
 
 	method come(comida) {
@@ -85,6 +85,10 @@ object pepita {
 		if (not gestorDeComidas.existeComida(posibleComida)) {
 			self.error("Esto no es una comida")
 		}
+	}
+	
+	method pasarDeNivel() {
+		nivelActual.terminar()
 	}
 
 }

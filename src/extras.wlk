@@ -1,5 +1,6 @@
 import pepita.*
 import wollok.game.*
+import niveles.*
 
 object nido {
 
@@ -10,7 +11,7 @@ object nido {
 	method teEncontro(ave) {
 		game.say(ave, "¡GANE!")
 		game.removeTickEvent("GRAVEDAD")
-		game.schedule(2000, { game.stop() })
+		game.schedule(2000, { ave.pasarDeNivel() })
 	}
 }
 
